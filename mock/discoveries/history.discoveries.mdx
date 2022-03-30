@@ -9,6 +9,10 @@ media:
   author:
     name: Unsplash
     url: https://unsplash.com/
+embeddedLocal:
+  image1:
+    src: ::file ./img-placeholder-5.jpg
+    alt: placeholder
 pubDate: 2022-02-09
 thematics:
   - agriculture
@@ -17,13 +21,13 @@ thematics:
 
 <Block>
   <Prose>
+  
 ## CB Prose Alpha
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae ornare lectus, ac accumsan erat. Cras eget eleifend ligula. Curabitur ac nisi tempor, molestie lorem vitae, consectetur turpis. Etiam hendrerit et sapien ac interdum.
 
 <Image 
-  src="http://via.placeholder.com/256x128?text=align-left" 
-  alt="Media example" 
+  embedded="image1"
   align="left" 
   attr="tux" 
   attrAuthor="penguin"

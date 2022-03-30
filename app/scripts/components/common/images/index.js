@@ -9,6 +9,7 @@ import {
 } from '$components/common/figure';
 
 import { captionDisplayName } from '$components/common/blocks/block-constant';
+import { useThematicAreaDiscovery } from '$utils/thematics';
 
 export const Caption = function ({ children, attrAuthor, attrUrl }) {
   return (
@@ -29,12 +30,30 @@ Caption.propTypes = {
 
 const Image = function (props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { align, attr, attrAuthor, attrUrl, ...propsWithoutAttrs } = props;
+
+  const { align, attr, attrAuthor, attrUrl, embedded, ...propsWithoutAttrs } =
+    props;
   const imageAlign = align ? align : 'center';
+
+  function getImage() {
+    if (embedded) {
+      const discovery = useThematicAreaDiscovery();
+      const { embeddedLocal } = discovery.data;
+      return (
+        <img
+          loading='lazy'
+          src={embeddedLocal[embedded].src}
+          alt={embeddedLocal[embedded].alt}
+          {...propsWithoutAttrs}
+        />
+      );
+    } else return <img loading='lazy' {...propsWithoutAttrs} />;
+  }
+
   return attr || attrAuthor ? (
     // if it is an inline image with a caption
     <Figure className={`align-${imageAlign}`}>
-      <img loading='lazy' {...propsWithoutAttrs} />
+      {getImage()}
       <Caption attrAuthor={attrAuthor} attrUrl={props.attrUrl}>
         {attr}
       </Caption>

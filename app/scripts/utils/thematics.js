@@ -44,7 +44,6 @@ export function useThematicAreaDiscovery() {
   const { discoveryId } = useParams();
 
   const discovery = discoveries[discoveryId];
-
   // Stop if the discovery doesn't exist or if it doesn't belong to this
   // thematic area.
   if (!discovery || !discovery.data.thematics.includes(thematic.data.id)) {
@@ -65,7 +64,6 @@ export function useThematicAreaDataset() {
   const { datasetId } = useParams();
 
   const dataset = datasets[datasetId];
-
   // Stop if the datasets doesn't exist or if it doesn't belong to this
   // thematic area.
   if (!dataset || !dataset.data.thematics.includes(thematic.data.id)) {
