@@ -16,6 +16,13 @@ thematics:
   - covid-19
 
 layers:
+  - id: blue-tarp-detection
+    name: Blue tarp detection
+    type: raster
+    description: Blue tarp detection test
+    zoomExtent:
+      - 13
+      - 20
   - id: blue-tarp-planetscope
     name: Blue tarp test
     type: raster
@@ -23,6 +30,13 @@ layers:
     zoomExtent:
       - 10
       - 20
+    compare:
+      datasetId: sandbox
+      layerId: blue-tarp-detection
+      mapLabel: |
+        ::js ({ dateFns, datetime, compareDatetime }) => {
+          return `${dateFns.format(datetime, 'LLL yyyy')} VS ${dateFns.format(compareDatetime, 'LLL yyyy')}`;
+        }
   - id: no2-monthly
     name: No2
     type: raster
