@@ -20,9 +20,15 @@ layers:
     name: Blue tarp detection
     type: raster
     description: Blue tarp detection test
+    hidden: true
     zoomExtent:
       - 13
       - 20
+    sourceParams:
+      resampling_method: bilinear
+      bidx: 1
+      color_formula: gamma r 1.05
+      colormap_name: coolwarm
   - id: blue-tarp-planetscope
     name: Blue tarp test
     type: raster
